@@ -23,6 +23,21 @@ app.get('', (req, res) => {
     })
 })
 
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About Me',
+        name: 'Pooji'
+    })
+})
+
+app.get('/help', (req, res) => {
+    res.render('help', {
+        helpText: 'This is the help page..',
+        title: 'Help', 
+        name: 'Pojo'
+    })
+})
+
 app.get('/products', (req, res) => {
     if(!req.query.search) {
         return res.send({
@@ -61,6 +76,22 @@ app.get('/weather', (req, res) => {
             address: req.query.address
         })
 
+    })
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: 'Help 404 page',
+        message: 'Help article not found',
+        name: 'pooju'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404 page',
+        message: 'Page not found',
+        name: 'poo'
     })
 })
 
